@@ -13,9 +13,10 @@
 
 # Circuit Diagram:
 
----
-To upload
---
+
+<img width="1920" height="1080" alt="Screenshot (309)" src="https://github.com/user-attachments/assets/dac4440c-013f-4083-8c1c-a1aff74a3f78" />
+
+
 
 # Procedure // Modify the procedure based on your circuit
 
@@ -56,13 +57,37 @@ Step 7: Save Your Work
 
 
 # Program
+```
+void setup()
+{
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
+  pinMode(A0,INPUT);
+  Serial.begin(9600);
 
----
-To upload
---
+}
 
+void loop()
+{
+  float value=analogRead(A0);
+  float temperatureC=((((value*5)/1023)-0.5)*100);
+  Serial.println("temperature");
+  Serial.println(temperatureC);
+  
+  if(temperatureC > 20)
+  {
+    digitalWrite(12,HIGH);
+    digitalWrite(13,LOW);
+  }
+  else
+  {
+    digitalWrite(12,LOW);
+    digitalWrite(13,LOW);
+  }
+}
+
+```
 # Result
-
----
-To upload
---
+```
+Thus the speed of the fan is controlled using Temperature sensor.
+```
